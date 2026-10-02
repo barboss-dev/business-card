@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Рома — визитка</title>
+<meta property="og:title" content="Рома — визитка">
+<meta property="og:description" content="Telegram и VK на старой консоли.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#d8d2b4;--ink:#35342b;--g1:#d2d2d4;--g2:#b4b4ba;--g3:#8f8f97;--tg:#4d7290;--vk:#a34f61;--dc:#6a62a8;
+--rx:0deg;--ry:0deg;--gx:50%;--gy:30%;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:inherit;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:#2a2830;background-image:radial-gradient(circle at 50% 35%,#3d3a48,#1c1b22 75%);font:8px/1.5 "Press Start 2P",monospace;overflow-x:hidden}
+#gate{position:fixed;inset:0;z-index:9;border:0;width:100%;cursor:pointer;background:var(--cream);color:var(--ink);font:16px "Press Start 2P",monospace;display:grid;place-items:center}
+#gate span{animation:blink 1.2s steps(2) infinite}
+#gate:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(53,52,43,.12) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 50%,rgba(53,52,43,.35))}
+#gate.off{display:none}
+@keyframes blink{50%{opacity:0}}
+main{min-height:100%;display:grid;place-items:center;padding:20px 16px;perspective:900px}
+.console{position:relative;width:100%;max-width:320px;padding:18px 16px 22px;border-radius:16px 16px 70px 16px;background:linear-gradient(160deg,var(--g1),var(--g2));border:2px solid #ffffff55;
+transform:rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;box-shadow:inset -4px -5px 0 var(--g3),calc(var(--ry)*-1.2) calc(14px + var(--rx)*1) 36px rgba(0,0,0,.55)}
+.console:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--gx) var(--gy),rgba(255,255,255,.35),transparent 45%)}
+.bezel{position:relative;background:#58595f;border-radius:12px 12px 40px 12px;padding:14px 14px 8px;box-shadow:inset 0 3px 8px rgba(0,0,0,.5);transform:translateZ(10px)}
+.screen{position:relative;background:var(--cream);padding:14px;border:3px solid #26252c;display:grid;gap:14px;min-height:300px;align-content:center;gap:12px;overflow:hidden;box-shadow:inset 0 0 26px rgba(53,52,43,.45)}
+.screen:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(53,52,43,.1) 0 1px,transparent 1px 3px),linear-gradient(115deg,rgba(255,255,255,.28),transparent 35%),radial-gradient(ellipse at center,transparent 55%,rgba(53,52,43,.3))}
+.btn{display:flex;align-items:center;justify-content:space-between;min-height:66px;padding:0 16px;color:#fff;text-decoration:none;font:12px "Press Start 2P",monospace;width:100%;cursor:pointer;text-align:left;opacity:.82;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink),inset 0 0 0 3px rgba(255,255,255,.22);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink),inset 0 0 0 3px rgba(255,255,255,.22)}
+.btn small{display:block;font-size:7px;margin-top:7px;opacity:.9}
+.btn i{font-style:normal;font-size:14px;visibility:hidden}
+.btn.sel{opacity:1;transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink),inset 0 0 0 3px rgba(255,255,255,.4)}
+.btn.sel i{visibility:visible;animation:blink .8s steps(2) infinite}
+.dc{background:var(--dc)}
+#st{position:relative;z-index:1;font-size:7px;color:var(--ink);min-height:10px;letter-spacing:.04em}
+.boot .screen{animation:boot .7s ease-out}
+@keyframes boot{0%{transform:scaleY(.02);filter:brightness(3)}60%{transform:scaleY(1.04);filter:brightness(1.6)}100%{transform:none;filter:none}}
+.flash{animation:flash .25s}
+@keyframes flash{50%{filter:brightness(1.5) contrast(1.2)}}
+.tg{background:var(--tg)}.vk{background:var(--vk)}
+.btn:focus-visible,#gate:focus-visible{outline:3px solid #ffd23f;outline-offset:3px}
+.brand{margin:10px 0 2px 6px;color:#e4e1f2;font-size:7px;letter-spacing:.12em}
+.brand b{color:#ff8fba;font-weight:400}
+.deco{display:flex;justify-content:space-between;align-items:center;margin:20px 8px 6px;transform:translateZ(6px)}
+.dp{display:grid;grid-template:repeat(3,26px)/repeat(3,26px);width:78px;height:78px;background:none}
+.dp b{background:#2b2a33;grid-area:2/2}
+.dp button,.ab button{border:0;cursor:pointer;touch-action:manipulation;color:#bdbac7;font:9px "Press Start 2P",monospace}
+.dp button{background:#2b2a33;box-shadow:0 4px 0 #000}
+.dp button:active,.ab button:active{transform:translateY(3px);box-shadow:none}
+.dp .u{grid-area:1/2;border-radius:5px 5px 0 0}.dp .l{grid-area:2/1;border-radius:5px 0 0 5px}.dp .r{grid-area:2/3;border-radius:0 5px 5px 0}.dp .dn{grid-area:3/2;border-radius:0 0 5px 5px}
+.ab{display:flex;gap:12px;transform:rotate(-22deg)}
+.ab button{width:42px;height:42px;border-radius:50%;background:#8f3b5d;box-shadow:0 4px 0 #511b34;color:#fff}
+.ab button+button{margin-top:-14px}
+.dp button:focus-visible,.ab button:focus-visible{outline:3px solid #ffd23f}
+.mid{display:flex;justify-content:center;gap:16px;transform:rotate(-22deg);margin:2px 0 10px}
+.mid span{width:38px;height:9px;border-radius:5px;background:#6e6e76;box-shadow:0 2px 0 #4a4a50}
+.grille{position:absolute;right:20px;bottom:14px;display:grid;gap:5px;transform:rotate(-22deg)}
+.grille span{width:38px;height:4px;border-radius:2px;background:var(--g3)}
+.tap{text-align:center;margin-top:8px;color:#6c6c74;font-size:8px;letter-spacing:.3em}
+@media(prefers-reduced-motion:reduce){#gate span{animation:none}}
+</style>
+</head>
+<body>
+<button id="gate" aria-label="Открыть визитку"><span>нажмите</span></button>
+<main>
+<div class="console" id="con">
+<div class="bezel">
+<div class="screen">
+<a class="btn tg sel" href="https://t.me/Razbeynik" target="_blank" rel="noopener" aria-label="Открыть Telegram"><span>TELEGRAM<small>@Razbeynik</small></span><i>▶</i></a>
+<a class="btn vk" href="https://vk.ru/soxdrh" target="_blank" rel="noopener" aria-label="Открыть VK"><span>VK<small>vk.ru/soxdrh</small></span><i>▶</i></a>
+<button class="btn dc" type="button" id="dc" aria-label="Скопировать Discord @razbeynik"><span>DISCORD<small>@razbeynik · COPY</small></span><i>▶</i></button>
+<p id="st" aria-live="polite">ВЫБЕРИ ◀ ▶ ▲ ▼</p>
+</div>
+<p class="brand">РОМА <b>●</b> TETRIS</p>
+</div>
+<div class="deco"><div class="dp"><button class="u" data-k="p" aria-label="Вверх"></button><button class="l" data-k="p" aria-label="Влево"></button><b></b><button class="r" data-k="n" aria-label="Вправо"></button><button class="dn" data-k="n" aria-label="Вниз"></button></div><div class="ab"><button data-k="b" aria-label="Сменить цвет экрана">B</button><button data-k="a" aria-label="Выбрать">A</button></div></div>
+<div class="mid" aria-hidden="true"><span></span><span></span></div>
+<div class="grille" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<p class="tap">tap</p>
+</div>
+</main>
+<script>
+const R=document.documentElement,reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+let tx=0,ty=0,cx=0,cy=0,sensor=false,lastPtr=-1e9;
+function onOri(e){if(e.gamma==null||e.beta==null)return;sensor=true;ty=clamp(e.gamma,-35,35)*.6;tx=clamp(-(e.beta-55),-35,35)*.6}
+addEventListener("pointermove",e=>{if(sensor||e.pointerType==="touch")return;lastPtr=performance.now();ty=(e.clientX/innerWidth-.5)*32;tx=-(e.clientY/innerHeight-.5)*32});
+function loop(t){requestAnimationFrame(loop);
+if(!sensor&&!reduce&&t-lastPtr>2500){ty=Math.sin(t/1500)*9;tx=Math.cos(t/2000)*6}
+cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;
+R.style.setProperty("--rx",cx.toFixed(2)+"deg");R.style.setProperty("--ry",cy.toFixed(2)+"deg");
+R.style.setProperty("--gx",(50+cy*2.2).toFixed(1)+"%");R.style.setProperty("--gy",(30-cx*2.2).toFixed(1)+"%")}
+requestAnimationFrame(loop);
+document.getElementById("gate").addEventListener("click",function(){
+this.classList.add("off");document.body.classList.add("boot");
+try{const D=window.DeviceOrientationEvent;
+if(D&&typeof D.requestPermission==="function"){D.requestPermission().then(s=>{if(s==="granted")addEventListener("deviceorientation",onOri)}).catch(()=>{})}
+else if(D){addEventListener("deviceorientation",onOri)}}catch(e){}
+});
+
+const rows=[...document.querySelectorAll(".btn")],st=document.getElementById("st"),scr=document.querySelector(".screen");
+const P=[["КРЕМ",["#d8d2b4","#35342b","#4d7290","#a34f61","#6a62a8"]],["ЯНТАРЬ",["#dcc58a","#3b2d16","#4a6a73","#8e4a3c","#6b5a88"]],["ТУМАН",["#c9d3d6","#2c3a40","#3f6a8a","#8c4a6a","#5a5f9a"]]];
+const V=["--cream","--ink","--tg","--vk","--dc"];
+let sel=0,pi=0,tm;
+const say=t=>{st.textContent=t;clearTimeout(tm);tm=setTimeout(()=>st.textContent="ВЫБЕРИ ◀ ▶ ▲ ▼",2600)};
+const buzz=()=>{try{navigator.vibrate&&navigator.vibrate(12)}catch(e){}};
+const flash=()=>{scr.classList.remove("flash");void scr.offsetWidth;scr.classList.add("flash")};
+function pick(i){sel=(i+rows.length)%rows.length;rows.forEach((r,k)=>r.classList.toggle("sel",k===sel));say("> "+rows[sel].querySelector("span").firstChild.textContent)}
+function pal(){pi=(pi+1)%P.length;P[pi][1].forEach((c,k)=>R.style.setProperty(V[k],c));flash();say("ЭКРАН: "+P[pi][0])}
+async function copy(){const t="@razbeynik";let ok=false;
+try{await navigator.clipboard.writeText(t);ok=true}catch(e){try{const a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();ok=document.execCommand("copy");a.remove()}catch(e2){}}
+flash();say(ok?"СКОПИРОВАНО "+t:"НЕ УДАЛОСЬ: "+t);
+const sm=document.querySelector("#dc small");sm.textContent=ok?"СКОПИРОВАНО!":t;setTimeout(()=>sm.textContent="@razbeynik · COPY",1800)}
+document.getElementById("dc").addEventListener("click",()=>{buzz();copy()});
+rows.forEach((r,k)=>{r.addEventListener("pointerdown",()=>{if(sel!==k)pick(k)});if(r.tagName==="A")r.addEventListener("click",()=>{buzz();flash();say("ОТКРЫВАЮ...")})});
+const act={p:()=>pick(sel-1),n:()=>pick(sel+1),a:()=>rows[sel].click(),b:pal};
+document.querySelectorAll("[data-k]").forEach(b=>b.addEventListener("click",()=>{buzz();act[b.dataset.k]()}));
+addEventListener("keydown",e=>{const m={ArrowUp:"p",ArrowLeft:"p",ArrowDown:"n",ArrowRight:"n",b:"b"}[e.key];if(m){e.preventDefault();act[m]()}else if(e.key==="Enter"&&document.activeElement===document.body)act.a()});
+</script>
+</body>
+</html>
